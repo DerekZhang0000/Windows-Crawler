@@ -25,6 +25,7 @@ if __name__ == '__main__':
                 data_dict[dir_path] = os.listdir(dir_path)
             json.dump(data_dict, wc_json)
 
+    data = {}
     with open('wc_data.json', 'r') as wc_json:
         data = json.load(wc_json)
 
@@ -37,23 +38,26 @@ if __name__ == '__main__':
     if args.add:
         dir_to_add = os.path.abspath(args.add)
         data[dir_to_add] = os.listdir(dir_to_add)
+        with open('wc_data.json', 'w') as wc_json:
+            json.dump(data, wc_json)
         print(f'{NEUTRAL_COLOR}{os.path.abspath(dir_to_add)} added to the list of directories{RESET_COLOR}')
         exit(0)
     
     if args.remove:
         dir_to_remove = os.path.abspath(args.remove)
         data.pop(dir_to_remove, None)
+        with open('wc_data.json', 'w') as wc_json:
+            json.dump(data, wc_json)
         print(f'{NEUTRAL_COLOR}{os.path.abspath(dir_to_remove)} removed from the list of directories{RESET_COLOR}')
         exit(0)
 
     if args.update:
         for dir_path in data.keys():
             data[dir_path] = os.listdir(dir_path)
+        with open('wc_data.json', 'w') as wc_json:
+            json.dump(data, wc_json)
         print(f'{NEUTRAL_COLOR}Directories updated{RESET_COLOR}')
         exit(0)
-
-    with open('wc_data.json', 'w') as wc_json:
-        json.dump(data, wc_json)
 
     unauthorized_found = 0
     for dir_path, files in data.items():
