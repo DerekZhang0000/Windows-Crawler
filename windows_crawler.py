@@ -65,7 +65,10 @@ if __name__ == '__main__':
             if file_or_folder not in files:
                 if unauthorized_found == 0:
                     print(f'{UNAUTHORIZED_COLOR}Unauthorized files or folders:{RESET_COLOR}')
-                print(f'{UNAUTHORIZED_COLOR}{os.path.abspath(os.path.join(dir_path, file_or_folder))}{RESET_COLOR}')
+                bad_file_path = os.path.abspath(os.path.join(dir_path, file_or_folder))
+                print(f'{UNAUTHORIZED_COLOR}{bad_file_path}{RESET_COLOR}')
+                with open('bad_files.txt', 'a') as out_file:
+                    out_file.write(bad_file_path + '\n')
                 unauthorized_found += 1
             else:
                 if args.verbose:

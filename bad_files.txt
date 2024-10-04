@@ -1,0 +1,8 @@
+C:\Program Files\MuMu
+C:\Program Files\NemuVbox
+C:\Users\derek\AppData\Local\CrashRpt
+C:\Users\derek\AppData\Local\NemuPlayer
+C:\Users\derek\.NEMU
+C:\Users\derek\mumu_boot.txt
+C:\Users\Default\.NEMU
+
